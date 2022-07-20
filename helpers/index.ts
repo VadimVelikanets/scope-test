@@ -18,7 +18,6 @@ import withThousandSeparator from './withThousandSeparator';
 import dayjs from './dayjs';
 import isValidEmail from './isValidEmail';
 import stopPropagationWithCallback from './stopPropagationWithCallback';
-import emailValidation from './emailValidation';
 
 export {
   fetchRetry,
@@ -41,5 +40,4 @@ export {
   withThousandSeparator,
   isValidEmail,
   stopPropagationWithCallback,
-  emailValidation,
 };

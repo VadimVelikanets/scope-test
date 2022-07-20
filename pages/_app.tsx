@@ -115,15 +115,20 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
         <FeatureToggleProvider>
           <LoggedInProvider>
             <NotificationProvider>
-              {pathname !== '/login' && <Navigation />}
-
-              <div className="pt-16">
-                <ResizedContainer
-                  left={<TagSideBar />}
-                  center={<Component {...pageProps} />}
-                  right={<ProfileDetailsWrap />}
-                />
-              </div>
+              {pathname === '/login' ? (
+                <Component {...pageProps} />
+              ) : (
+                <>
+                  <Navigation />
+                  <div className="pt-16">
+                    <ResizedContainer
+                      left={<TagSideBar />}
+                      center={<Component {...pageProps} />}
+                      right={<ProfileDetailsWrap />}
+                    />
+                  </div>
+                </>
+              )}
             </NotificationProvider>
           </LoggedInProvider>
         </FeatureToggleProvider>
