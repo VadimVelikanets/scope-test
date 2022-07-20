@@ -7,9 +7,7 @@
     "start": "next start",
     "lint": "next lint",
     "export": "next build && next export -o dist",
-    "deploy": "yarn export && npx surge --domain `cat CNAME` dist",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "deploy": "yarn export && npx surge --domain `cat CNAME` dist"
   },
   "dependencies": {
     "@apollo/client": "^3.5.9",
