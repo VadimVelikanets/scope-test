@@ -164,6 +164,7 @@ function ResizedContainer({ left, center, right }: ResizedContainerPropsType): J
       >
         <div className="w-2 bg-gray-50 p-1 h-full border-r border-gray-200 " />
       </div>
+
       <CenterPanel centerWidth={centerWidth} setCenterWidth={setCenterWidth}>
         {center}
       </CenterPanel>

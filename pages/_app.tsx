@@ -17,6 +17,7 @@ import TagSideBar from 'components/Search/Sidebar/TagSidebar';
 import ResizedContainer from 'components/Search/ResizedContainer';
 import ProfileDetailsWrap from 'components/Search/Details/ProfileDetailsWrap';
 import Navigation from '../components/Navigation';
+import FilterProvider from "../context/FilterContext";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -115,20 +116,22 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
         <FeatureToggleProvider>
           <LoggedInProvider>
             <NotificationProvider>
-              {pathname === '/login' ? (
-                <Component {...pageProps} />
-              ) : (
-                <>
-                  <Navigation />
-                  <div className="pt-16">
-                    <ResizedContainer
-                      left={<TagSideBar />}
-                      center={<Component {...pageProps} />}
-                      right={<ProfileDetailsWrap />}
-                    />
-                  </div>
-                </>
-              )}
+              <FilterProvider>
+                {pathname === '/login' ? (
+                  <Component {...pageProps} />
+                ) : (
+                  <>
+                    <Navigation />
+                    <div className="pt-16">
+                      <ResizedContainer
+                        left={<TagSideBar />}
+                        center={<Component {...pageProps} />}
+                        right={<ProfileDetailsWrap />}
+                      />
+                    </div>
+                  </>
+                )}
+              </FilterProvider>
             </NotificationProvider>
           </LoggedInProvider>
         </FeatureToggleProvider>
