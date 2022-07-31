@@ -1,7 +1,7 @@
 import React, {type ReactNode, useState, useRef} from 'react';
 import {useOutsideClick} from "../../hooks/useOutsideClick";
 import Image from "next/image";
-
+import classNames from "classnames";
 type DropdownFilterProps = {
     name: string,
     children: ReactNode
@@ -29,9 +29,8 @@ function DropdownFilter({children, name}: DropdownFilterProps) {
                        height="14"
                 />
             </div>
-            {isShowDropdown && (
-                <div className="absolute top-8 left-0 z-10 bg-white p-4 shadow-lg rounded-md">{children}</div>
-            )}
+            <div className={classNames("absolute top-8 left-0 z-10 bg-white p-4 shadow-lg rounded-md w-full", { ["hidden"] : !isShowDropdown })}
+            >{children}</div>
         </div>
     );
 }
