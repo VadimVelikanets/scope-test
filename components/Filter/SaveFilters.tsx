@@ -8,7 +8,6 @@ function SaveFilters(props) {
         if(filterData) return Object.keys(filterData).map(key => key + ': ' + filterData[key]);
         return null;
     },[filterData, setFilterData])
-    console.log(savedFilterData)
 
     const onDeleteFilterItem = (item: string) => {
 
@@ -26,7 +25,7 @@ function SaveFilters(props) {
                 <div key={item}
                     className="py-1 px-4 rounded-full bg-gray-200 mr-2 text-sm flex items-center mb-2"
                 >
-                    <span>{item}</span>
+                    <span>{item.replace(': true','')}</span>
                     <span className="h-[16px] ml-2 cursor-pointer"
                         onClick={() => onDeleteFilterItem(item)}
                     >

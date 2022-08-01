@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import Head from 'next/head';
-import '../styles/index.css';
+import '../styles/index.scss';
 import '../public/fonts/fonts.css';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';

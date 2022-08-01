@@ -29,7 +29,7 @@ function DropdownFilter({children, name}: DropdownFilterProps) {
                        height="14"
                 />
             </div>
-            <div className={classNames("absolute top-8 left-0 z-10 bg-white p-4 shadow-lg rounded-md w-full", { ["hidden"] : !isShowDropdown })}
+            <div className={classNames("absolute top-8 left-0 z-10 bg-white p-4 shadow-lg rounded-md w-[320px]", { ["hidden"] : !isShowDropdown })}
             >{children}</div>
         </div>
     );

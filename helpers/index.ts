@@ -18,7 +18,8 @@ import withThousandSeparator from './withThousandSeparator';
 import dayjs from './dayjs';
 import isValidEmail from './isValidEmail';
 import stopPropagationWithCallback from './stopPropagationWithCallback';
-
+import getCountry from "./getCountry";
+import getLanguage from "./getLanguage";
 export {
   fetchRetry,
   triggerFileDownload,
@@ -40,4 +41,6 @@ export {
   withThousandSeparator,
   isValidEmail,
   stopPropagationWithCallback,
+  getCountry,
+  getLanguage
 };

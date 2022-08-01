@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import  {useFilterContext} from "../../context/FilterContext";
 import MinMaxField from "./MinMaxField";
+import Radio from "./Radio";
 
 function InfluencerMenu(): JSX.Element {
     const [minFollowers, setMinFollowers] = useState(0);
@@ -43,25 +44,25 @@ function InfluencerMenu(): JSX.Element {
 
     return (
         <div>
-            <input type="radio" id="female"
-                   name="gender" value="female"
+            <div className="text-gray-600 mb-2">Gender</div>
+            <Radio value="female"
+                   label="Female"
+                   name="gender"
                    checked={filterData?.gender === "female"}
                    onChange={() => setFilterData({
-                    ...filterData,
-                    gender: "female"
-                    })}
+                       ...filterData,
+                       gender: "female"
+                   })}
             />
-            <label htmlFor="female">Female</label>
-
-            <input type="radio" id="male"
-                   name="gender" value="male"
+            <Radio value="male"
+                   label="male"
+                   name="gender"
                    checked={filterData?.gender === "male"}
                    onChange={() => setFilterData({
                        ...filterData,
                        gender: "male"
                    })}
             />
-            <label htmlFor="male">Male</label>
             <MinMaxField
                 title="Followers"
                 minValue={minFollowers}
