@@ -6,17 +6,15 @@ import {useFilterContext} from "../../context/FilterContext";
 function InputFilter(): JSX.Element {
     const {filterData, setFilterData} = useFilterContext();
     const [value, setValue] = useState('');
-    const [userList, setUserList] = useState([])
     const clearField = () => {
         setValue('')
     }
 
-    const {data, refetch} = useQuery(FETCH_AUTOCOMPLETE_USERNAME, {
+    const {data} = useQuery(FETCH_AUTOCOMPLETE_USERNAME, {
         variables: {
             querystring: value
         }
     })
-    console.log(data?.autocomplete?.influencers)
 
     const onSelectValue = (item: string) => {
         setValue('')
@@ -67,7 +65,6 @@ function InputFilter(): JSX.Element {
                                     <div className="text-sm">{item.ig_username}</div>
                                     <div className="text-gray-600">{item.full_name}</div>
                                 </div>
-
                             </div>
                         ))}
                     </div>
