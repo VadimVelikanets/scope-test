@@ -10,7 +10,6 @@ function FilterResult(): JSX.Element {
             ) : (
                 <span className="text-sm text-gray-600">Loading...</span>
             )}
-
         </div>
     );
 }

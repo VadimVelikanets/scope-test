@@ -6,10 +6,6 @@ import Spinner from "../Spinner";
 import {useFilterContext} from "../../context/FilterContext";
 import Pagination from "./Pagination";
 
-type UserListProps = {
-    queryData: object | null
-}
-
 function UserList(): JSX.Element {
     const {filterData, setFilterData, setTotalResults, totalResults} = useFilterContext();
     const [currentPage, setCurrentPage] = useState(0);
@@ -38,6 +34,10 @@ function UserList(): JSX.Element {
         setTotalResults(data?.influencers?.num_total_results)
     }, [data, filterData, setFilterData, loading])
 
+    useEffect(() => {
+        setCurrentPage(0)
+    }, [filterQueryString])
+
     const onChangeCurrentPage = (value: number) => {
         setCurrentPage(value)
     }
@@ -45,8 +45,7 @@ function UserList(): JSX.Element {
     if(loading) return <Spinner/>
     return (
         <div>
-            <div className="overflow-y-scroll"
-                 style={{ height: 'calc(100vh - 275px)' }}>
+            <div>
                 {data?.influencers?.influencers.map(item => (
                     <UserItem key={item?.id} item={item}/>
                 ))}

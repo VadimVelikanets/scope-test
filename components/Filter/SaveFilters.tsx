@@ -1,7 +1,8 @@
 import React, {useMemo} from 'react';
 import {useFilterContext} from "../../context/FilterContext";
 import Image from "next/image";
-function SaveFilters(props) {
+
+function SaveFilters(): JSX.Element {
     const {filterData, setFilterData} = useFilterContext();
 
     const savedFilterData = useMemo(() => {

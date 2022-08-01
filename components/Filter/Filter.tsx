@@ -12,7 +12,7 @@ function Filter(): JSX.Element {
     return (
         <div className="block bg-white pt-5 pb-8 border border-transparent relative">
             <InputFilter />
-            <div className="flex items-center">
+            <div className="flex-col items-start md:flex-row flex md:items-center">
                 <DropdownFilter name="Influencer">
                     <InfluencerMenu/>
                 </DropdownFilter>

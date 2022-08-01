@@ -2,6 +2,7 @@ import React, {type ReactNode, useState, useRef} from 'react';
 import {useOutsideClick} from "../../hooks/useOutsideClick";
 import Image from "next/image";
 import classNames from "classnames";
+
 type DropdownFilterProps = {
     name: string,
     children: ReactNode
@@ -10,7 +11,6 @@ type DropdownFilterProps = {
 function DropdownFilter({children, name}: DropdownFilterProps) {
     const [isShowDropdown, setShowDropdown] = useState(false);
 
-
     const handleClickOutside = () => {
         setShowDropdown(false)
     }
@@ -18,7 +18,7 @@ function DropdownFilter({children, name}: DropdownFilterProps) {
     useOutsideClick(dropdownRef, handleClickOutside)
 
     return (
-        <div className="relative mr-2" ref={dropdownRef}>
+        <div className="relative mr-2 mb-2" ref={dropdownRef}>
             <div className="text-sm text-gray-600 flex items-center cursor-pointer"
                  onClick={() => setShowDropdown(!isShowDropdown)}
             >
@@ -29,7 +29,7 @@ function DropdownFilter({children, name}: DropdownFilterProps) {
                        height="14"
                 />
             </div>
-            <div className={classNames("absolute top-8 left-0 z-10 bg-white p-4 shadow-lg rounded-md w-[320px]", { ["hidden"] : !isShowDropdown })}
+            <div className={classNames("absolute top-8 left-0 z-10 bg-white p-4 shadow-lg rounded-md w-[300px] md:w-[320px]", { ["hidden"] : !isShowDropdown })}
             >{children}</div>
         </div>
     );

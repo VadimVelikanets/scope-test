@@ -26,11 +26,9 @@ query fetchInfluencers(
     errors
     influencers {
       ...InfluencerFields
-      __typename
     }
     num_total_results
     current_page
-    __typename
   }
 }
 `

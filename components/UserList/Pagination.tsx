@@ -40,7 +40,7 @@ function Pagination({currentPage, onChangeCurrentPage, totalResults}: Pagination
             <div>
                 {totalResults > 25 && (
                     <div className="my-4 flex justify-center">
-                        <button className={classNames("relative inline-flex items-center px-4 py-2 border text-sm font-medium bg-white border-gray-300 text-gray-500 hover:bg-gray-50 rounded-l-md",
+                        <button className={classNames("relative inline-flex items-center px-3 py-2 md:px-4 border text-sm font-medium bg-white border-gray-300 text-gray-500 hover:bg-gray-50 rounded-l-md",
                             { ["pointer-events-none opacity-60"] : currentPage === 0 })}
                                 onClick={() => onPageHandler(currentPage - 1)}
                         >
@@ -56,12 +56,12 @@ function Pagination({currentPage, onChangeCurrentPage, totalResults}: Pagination
                         {memoPages.length && memoPages.map(item => (
                             <button key={item}
                                     onClick={() => onPageHandler(item)}
-                                    className={classNames("relative inline-flex items-center px-4 py-2 border text-sm font-medium bg-white border-gray-300 text-gray-500 hover:bg-gray-50",
+                                    className={classNames("relative inline-flex items-center px-3 py-2 md:px-4 border text-sm font-medium bg-white border-gray-300 text-gray-500 hover:bg-gray-50",
                                         { ["bg-slate-200"] : item === currentPage })}>
                                 {item + 1}
                             </button>
                         ))}
-                        <button className={classNames("relative inline-flex items-center px-4 py-2 border text-sm font-medium bg-white border-gray-300 text-gray-500 hover:bg-gray-50 rounded-r-md",
+                        <button className={classNames("relative inline-flex items-center px-3 py-2 md:px-4 border text-sm font-medium bg-white border-gray-300 text-gray-500 hover:bg-gray-50 rounded-r-md",
                             { ["pointer-events-none opacity-60"] : currentPage === totalResults })}
                                 onClick={() => onPageHandler(currentPage + 1)}
                         >

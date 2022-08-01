@@ -8,7 +8,7 @@ import InputCalendar from "./InputCalendar";
 import InputCalendarTracked from "./InputCalendarTracked";
 
 function SaveWithMenu(): JSX.Element {
-    const {filterData, setFilterData} = useFilterContext();
+    const {filterData} = useFilterContext();
 
     return (
         <div>

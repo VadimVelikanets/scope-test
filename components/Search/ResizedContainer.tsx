@@ -151,7 +151,7 @@ function ResizedContainer({ left, center, right }: ResizedContainerPropsType): J
   }, [onLeftLineMouseMove, onLeftLineMouseUp]);
 
   return (
-    <div ref={splitPaneRef} className="h-full flex items-start">
+    <div ref={splitPaneRef} className="block h-auto md:h-full md:flex md:items-start">
       <LeftPanel leftWidth={leftWidth} setLeftWidth={setLeftWidth}>
         {left}
       </LeftPanel>
@@ -177,7 +177,7 @@ function ResizedContainer({ left, center, right }: ResizedContainerPropsType): J
       >
         <div className="w-2 bg-gray-50 p-1 h-full border-l border-gray-200" />
       </div>
-      <div className="flex-1">{right}</div>
+      <div className="md:flex-1 ">{right}</div>
     </div>
   );
 }

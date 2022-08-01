@@ -35,7 +35,7 @@ function CenterPanel({ children, centerWidth, setCenterWidth }: CenterPanelProps
     }
   }, [centerRef, centerWidth, setCenterWidth]);
 
-  return <div className="flex-1" ref={centerRef}>{children}</div>;
+  return <div className=" md:flex-1 min-w-full  md:min-w-0" ref={centerRef}>{children}</div>;
 }
 
 export default CenterPanel;
