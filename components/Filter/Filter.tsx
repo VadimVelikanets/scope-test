@@ -6,6 +6,7 @@ import DropdownFilter from "./DropdownFilter";
 import SaveWithMenu from "./SaveWithMenu";
 import LocationMenu from "./LocationMenu";
 import ExcludeMenu from "./ExcludeMenu";
+import FilterResult from "./FilterResult";
 
 function Filter(): JSX.Element {
     return (
@@ -26,6 +27,7 @@ function Filter(): JSX.Element {
                 </DropdownFilter>
             </div>
             <SaveFilters/>
+            <FilterResult/>
         </div>
     );
 }

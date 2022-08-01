@@ -8,11 +8,15 @@ type FilterProviderProps = {
 
 type filterContextProps = {
     filterData: null | object,
-    setFilterData: React.Dispatch<React.SetStateAction<null>>
+    setFilterData: React.Dispatch<React.SetStateAction<null>>,
+    totalResults: number,
+    setTotalResults: React.Dispatch<React.SetStateAction<number>>
 }
 const filterContextDefaultValues: filterContextProps = {
     filterData: null,
-    setFilterData: () => {}
+    setFilterData: () => {},
+    totalResults: 0,
+    setTotalResults: () => {}
 }
 const FilterContext = React.createContext<filterContextProps>(filterContextDefaultValues);
 
@@ -21,12 +25,14 @@ export function useFilterContext(): filterContextProps {
 }
 
 function FilterProvider({children}: FilterProviderProps): JSX.Element {
-    const [filterData, setFilterData] = useState(null)
+    const [filterData, setFilterData] = useState(null);
+    const [totalResults, setTotalResults] = useState(0);
+
     const memoFilterContextValue = useMemo(()=>{
         return {
-            filterData, setFilterData
+            filterData, setFilterData, totalResults, setTotalResults
         }
-    },[filterData, setFilterData])
+    },[filterData, setFilterData, totalResults, setTotalResults])
     return (
         <FilterContext.Provider value={memoFilterContextValue}>
             {children}

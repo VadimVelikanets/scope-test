@@ -20,7 +20,9 @@ function SaveFilters(props) {
     }
     return (
         <div className="mt-6 flex items-center flex-wrap">
-            <span className="mr-2 mb-2">Filters:</span>
+            {savedFilterData && (
+                <span className="mr-2 mb-2">Filters:</span>
+            )}
             {savedFilterData && savedFilterData.map(item => (
                 <div key={item}
                     className="py-1 px-4 rounded-full bg-gray-200 mr-2 text-sm flex items-center mb-2"

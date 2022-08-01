@@ -85,7 +85,7 @@ function InfluencerMenu(): JSX.Element {
                 isStepDropDown
             />
             <MinMaxField
-                title="Engagement"
+                title="Engagement %"
                 minValue={minEngagement}
                 maxValue={maxEngagement}
                 onChangeMinValue={onChangeMinEngagement}

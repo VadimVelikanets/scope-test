@@ -19,3 +19,15 @@ export const FETCH_AUTOCOMPLETE_HASHTAG = gql`
   }
 }
 `
+
+export const FETCH_AUTOCOMPLETE_USERNAME = gql`query autocomplete($querystring: String!, $tagId: ID) {
+  autocomplete(querystring: $querystring, tag_id: $tagId) {
+    errors
+    success
+    influencers {
+      ig_username
+      profile_pic_url
+      full_name
+    }
+  }
+}`

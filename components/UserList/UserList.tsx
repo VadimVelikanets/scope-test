@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import UserItem from "./UserItem";
 import {useQuery} from "@apollo/client";
 import {FETCH_USERS} from "../../queries/fetchUsers";
@@ -10,7 +10,7 @@ type UserListProps = {
 }
 
 function UserList(): JSX.Element {
-    const {filterData, setFilterData} = useFilterContext();
+    const {filterData, setFilterData, setTotalResults} = useFilterContext();
 
     const filterQueryString = useMemo(() => {
         if(filterData) return Object.keys(filterData).map(
@@ -31,6 +31,10 @@ function UserList(): JSX.Element {
         querystring: filterQueryString
       },
     });
+
+    useEffect(() => {
+        setTotalResults(data?.influencers?.num_total_results)
+    }, [data, filterData, setFilterData, loading])
 
     if(loading) return <Spinner/>
     return (

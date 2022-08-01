@@ -1,9 +1,26 @@
 import React, {useState} from 'react';
 import Image from "next/image";
+import {useQuery} from "@apollo/client";
+import {FETCH_AUTOCOMPLETE_USERNAME} from "../../queries/fetchAutocomplete";
+import {useFilterContext} from "../../context/FilterContext";
 function InputFilter(): JSX.Element {
-    const [value, setValue] = useState('')
+    const {filterData, setFilterData} = useFilterContext();
+    const [value, setValue] = useState('');
+    const [userList, setUserList] = useState([])
     const clearField = () => {
         setValue('')
+    }
+
+    const {data, refetch} = useQuery(FETCH_AUTOCOMPLETE_USERNAME, {
+        variables: {
+            querystring: value
+        }
+    })
+    console.log(data?.autocomplete?.influencers)
+
+    const onSelectValue = (item: string) => {
+        setValue('')
+        setFilterData({...filterData, username: item?.ig_username})
     }
 
     return (
@@ -32,6 +49,28 @@ function InputFilter(): JSX.Element {
                                height="20"
                         />
                     </span>
+                )}
+                {(value.length > 0 && data?.autocomplete?.influencers.length > 0) && (
+                    <div className="absolute top-19 left-0 z-10 bg-white py-2 shadow-lg rounded-md w-full h-[260px] overflow-y-auto border-gray-300 border-solid border">
+                        {data?.autocomplete?.influencers && data?.autocomplete?.influencers.map(item => (
+                            <div className="cursor-pointer  py-2 px-4 hover:bg-slate-50 flex items-center"
+                                 key={item.ig_username}
+                                 onClick={() => onSelectValue(item)}
+                            >
+                                <Image src={item?.profile_pic_url}
+                                       width="40"
+                                       height="40"
+                                       loader={() => item?.profile_pic_url}
+                                       className="rounded-full object-cover"
+                                />
+                                <div className="ml-3">
+                                    <div className="text-sm">{item.ig_username}</div>
+                                    <div className="text-gray-600">{item.full_name}</div>
+                                </div>
+
+                            </div>
+                        ))}
+                    </div>
                 )}
             </div>
         </>
